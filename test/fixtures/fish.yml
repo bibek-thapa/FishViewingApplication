@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  genus: MyString
+  commonname: MyString
+  description: MyString
+  thumbnail: MyString
+
+two:
+  genus: MyString
+  commonname: MyString
+  description: MyString
+  thumbnail: MyString

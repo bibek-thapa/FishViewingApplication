@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Genus:</strong>
+  <%= @fish.genus %>
+</p>
+
+<p>
+  <strong>Commonname:</strong>
+  <%= @fish.commonname %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @fish.description %>
+</p>
+
+<p>
+  <strong>Thumbnail:</strong>
+  <%= @fish.thumbnail %>
+</p>
+
+<div style:"width:400px;height:auto">
+<%=image_tag(@fish.file,style:'width:50%')%>
+
+  </div>
+
+<%= link_to 'Edit', edit_fish_path(@fish) %> |
+<%= link_to 'Back', fish_index_path %>
