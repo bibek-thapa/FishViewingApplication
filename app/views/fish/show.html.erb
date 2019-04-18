@@ -20,10 +20,13 @@
   <%= @fish.thumbnail %>
 </p>
 
-<div style:"width:400px;height:auto">
-<%=image_tag(@fish.file,style:'width:50%')%>
 
-  </div>
+<%(0...@fish.files.count).each do |file|%>
+
+	<%=image_tag(@fish.thumbnails(file))%>
+
+<%end%>
+ 
 
 <%= link_to 'Edit', edit_fish_path(@fish) %> |
 <%= link_to 'Back', fish_index_path %>

@@ -69,6 +69,6 @@ class FishController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fish_params
-      params.require(:fish).permit(:genus, :commonname, :description, :thumbnail,:file)
+      params.require(:fish).permit(:genus, :commonname, :description, :thumbnail,files:[])
     end
 end
