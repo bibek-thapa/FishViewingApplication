@@ -1,8 +1,7 @@
 <div class="jumbotron">
  <div class="container">
- <h1>Welcome to my world of bees!</h1>
- <p>The happiness of the bee and the dolphin is to exist. For man it is to kn
-ow that and to wonder at it.</p>
+ <h1>Welcome to my world of fish!</h1>
+ 
  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more>></a></p>
  </div>
  </div>
@@ -14,7 +13,7 @@ ow that and to wonder at it.</p>
  <% @fishes.each do |fish| %>
  <div class="col-md-4">
  <h2><%= fish.commonname%></h2>
- 
+ <%=fish.files%>
  <p>
  <%= link_to 'Read more >', fish, class: "btn btn-default"%>
  </p>
@@ -22,8 +21,8 @@ ow that and to wonder at it.</p>
 <% end %>
  </div>
 
- <%= link_to "Load the bug by JSON", "/loadBugs.html" %>
-  <%= link_to "Load the bug by XLS", "/loadBugsXLS.html" %>
+ <%= link_to "Load the fish by JSON", "/loadFish.html" %>
+  <%= link_to "Load the fish by XLS", "/loadFishXLS.html" %>
  <hr>
  <footer>
  <p>&copy; 2018 Company, Inc.</p>

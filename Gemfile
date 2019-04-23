@@ -6,6 +6,7 @@ ruby '2.5.3'
 gem 'bootstrap','~>4.0.0'
 gem 'jquery-rails' 
 gem 'rack-cors', :require => 'rack/cors'
+gem 'responsive_images'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -36,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'
+gem 'jasmine'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

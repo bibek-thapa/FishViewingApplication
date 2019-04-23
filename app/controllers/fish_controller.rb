@@ -5,6 +5,14 @@ class FishController < ApplicationController
   # GET /fish.json
   def index
     @fish = Fish.all
+     
+    respond_to do |format|
+        format.html {render :index}
+        format.json {render :index, status: :ok}
+        format.xml {render xml: @fish.as_json}
+    end
+ 
+
   end
 
   # GET /fish/1
