@@ -11,27 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :genus %>
-    <%= form.text_field :genus %>
+  
+    <%= form.text_field :genus ,:class=>"form-control"%>
+  
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :commonname %>
-    <%= form.text_field :commonname %>
+    <%= form.text_field :commonname,:class=>"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.text_field :description,:class=>"form-control"%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :files %>
-    <%= form.file_field :files,multiple:true %>
+    <%= form.file_field :files,multiple:true,:class=>"form-control-file" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit%>
   </div>
 <% end %>

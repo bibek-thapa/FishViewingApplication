@@ -1,28 +1,55 @@
 <div class="jumbotron">
  <div class="container">
  <h1>Welcome to my world of fish!</h1>
+
+
+  <script src="loadFishXls.js"></script>
  
  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more>></a></p>
  </div>
  </div>
 
 
+
+</body>
+
+
  <div class="container-fluid">
  <!-- Example row of columns -->
  <div class="row">
+ 	<ul id="fishList">
+ 		<li class="noneMarker"><em>none yet</em></li>
+</ul>
+</div>
+
+
+ 
+ </ul>	
+ <div class ="container-fluid">
+<div class="row">
  <% @fishes.each do |fish| %>
  <div class="col-md-4">
  <h2><%= fish.commonname%></h2>
- <%=fish.files%>
+
+  <% fish.files.each do |image| %>
+	<%=image_tag image.variant(combine_options: {
+      auto_orient: true,
+      gravity: "center",
+      resize: "200x200^",
+ }).processed,class:"img-thumbnail"%>
+	<%break%>
+
+  <%end%>
+    
  <p>
  <%= link_to 'Read more >', fish, class: "btn btn-default"%>
  </p>
  </div>
 <% end %>
- </div>
+</div>
 
- <%= link_to "Load the fish by JSON", "/loadFish.html" %>
-  <%= link_to "Load the fish by XLS", "/loadFishXLS.html" %>
+<button id="loadButton">Next</button>
+
  <hr>
  <footer>
  <p>&copy; 2018 Company, Inc.</p>

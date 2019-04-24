@@ -1,3 +1,6 @@
+<h1 align="center" style="font-family:courier;"> Fish Information</h1>
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -15,14 +18,21 @@
   <%= @fish.description %>
 </p>
 
+
+
 <div>
+ <% @fish.files.each do |image| %>
+ <span class="fishgroup">
+    <%= image_tag image.variant(combine_options: {
+      auto_orient: true,
+      gravity: "center",
+      resize: "200x200^",
 
-<%(0...@fish.files.count).each do |file|%>
-
-	<%=image_tag(@fish.thumbnails(file))%>
-	
-<%end%>
+      }).processed,class:"img-thumbnail"%>
+  </span>
+  <% end %>
+</div>	
  
-</div>
+
 <%= link_to 'Edit', edit_fish_path(@fish) %> |
 <%= link_to 'Back', fish_index_path %>
