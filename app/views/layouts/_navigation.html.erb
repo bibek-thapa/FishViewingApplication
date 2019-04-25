@@ -1,7 +1,7 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-<a class="navbar-brand" href="#">Navbar</a>
+<a class="navbar-brand" href="#"></a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav
 barSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" ari
 a-label="Toggle navigation">
@@ -9,6 +9,10 @@ a-label="Toggle navigation">
 </button>
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 <ul class="navbar-nav mr-auto">
+<li class="nav-item">	
+	 <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="
+Search" class="form-control">
+</li>
  <li class="nav-item active">
  <a class="nav-link navbar-dark" href="/">Home <span class="sr-only">(current)</sp
 an></a>
@@ -35,10 +39,44 @@ an></a>
 <% end %>
 </li>
 <ul></ul>
-<form class="form-inline my-2 my-lg-0">
- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="
-Search">
- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</form>
-</div>
+
+<div>
+
 </nav>
+ </div>
+ <ul>
+ <li id="result" class="list-group" ></li>
+ </ul>
+ <br/>
+
+
+</div>
+
+
+
+<script>
+$(document).ready(function(){
+ $.ajaxSetup({ cache: false });
+ $('#search').keyup(function(){
+  $('#result').html('');
+  $('#state').val('');
+  var searchField = $('#search').val();
+  var expression = new RegExp(searchField, "i");
+  //$.getJSON('http://localhost:3000/fish.json', function(data) {
+  $.getJSON('http://localhost:3000/fish.json', function(data) {
+   $.each(data, function(key, value){
+    if (value.genus.search(expression) != -1 || value.commonname.search(expression) != -1)
+    {
+     $('#result').append('<li class="list-group-item link-class">'+value.genus+' | <span class="text-muted">'+value.commonname+'</span></li>');
+    }
+   });   
+  });
+ });
+ 
+ $('#result').on('click', 'li', function() {
+  var click_text = $(this).text().split('|');
+  $('#search').val($.trim(click_text[0]));
+  $("#result").html('');
+ });
+});
+</script>
