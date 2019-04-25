@@ -4,99 +4,72 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<canvas id="canvas"></canvas>
+	<script src="https://cdn.rawgit.com/davidsonfellipe/lena.js/master/dist/lena.js"></script>
+<p>
+Upload an image
+</p>
 
-<input type="file" onchange="previewFile()"><br>
-<img id="source" src="" height="200" alt="Image preview...">
-<p id="btn">Distort1</p>
- <!-- <img id="source1"
-       src="https://interactive-examples.mdn.mozilla.net/media/examples/gecko-320-213.jpg">
-<div style="display:none;">
-  <img id="source"
-       src="https://interactive-examples.mdn.mozilla.net/media/examples/gecko-320-213.jpg"> -->
+</h1>
+<input type="file" id="imageLoader"/>
+<label for="filter-changer">Select a filter to apply</label>
+<select id="filter-changer">
+  <option value="none">None</option>
+  <option value="red">Red</option>
+  <option value="gaussian">Gaussian</option>
+  <option value="grayscale">Grayscale</option>
+  <option value="highpass">highpass</option>
+  <option value="invert">invert</option>
+  <option value="laplacian">laplacian</option>
+  <option value="prewittHorizontal">Prewitt Horizontal</option>
+  <option value="prewittVertical">Prewitt Vertical</option>
+  <option value="roberts">roberts</option>
+  <option value="saturation">saturation</option>
+  <option value="sepia">sepia</option>
+  <option value="sharpen">sharpen</option>
+  <option value="sobelHorizontal">sobel Horizontal</option>
+  <option value="sobelVertical">sobel Vertical</option>
+  <option value="thresholding">thresholding</option>
+</select>
 
-   
-</div>
+<br>
 
-</html>
+<img id="original-image" />
+<canvas id="filtered-image" />
+
 
 <script>
-  document.getElementById("btn").addEventListener("click",distortion);
-  function distortion(){
-	const canvas = document.getElementById('canvas');
-	const ctx = canvas.getContext('2d');
-	const image = document.getElementById('source');
+	var imageLoader = document.getElementById('imageLoader');
+var originalImage = document.getElementById("original-image");
+var filteredImageCanvas = document.getElementById("filtered-image");
+var filterChanger = document.getElementById("filter-changer");
+var imageUploaded = false;
 
-	ctx.filter = 'contrast(1.4) sepia(1) drop-shadow(9px 9px 2px #e81)';
-	ctx.drawImage(image, 10, 10, 180, 120);
-	};
-
-
-	 function previewFile(){
-       var preview = document.querySelector('img'); //selects the query named img
-       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
-       var reader  = new FileReader();
-
-       reader.onloadend = function () {
-           preview.src = reader.result;
-       }
-
-       if (file) {
-           reader.readAsDataURL(file); //reads the data as a URL
-       } else {
-           preview.src = "";
-       }
-  }
-
-  previewFile(); 
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <html>
-<canvas width="300" height="450"></canvas>
-
-<h1> <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-</h1>
-
-</html>
-<script >
-$(document).ready(function() {
-    var image = new Image();
-    image.onload = function() {
-        var width = image.width,
-            height = image.height;
-        var context = $("canvas")[0].getContext("2d");
-        for (var i = 0; i <= height / 2; ++i) {
-            context.setTransform(1, -0.4 * i / height,
-                0, 1, 0, 60);
-            context.drawImage(image,
-                0, height / 2 - i, width, 2,
-                0, height / 2 - i, width, 2);
-            context.setTransform(1, 0.4 * i / height,
-                0, 1, 0, 60);
-            context.drawImage(image,
-                0, height / 2 + i, width, 2,
-                0, height / 2 + i, width, 2);
-        }
+// Handle image upload into img tag
+imageLoader.addEventListener('change', function(e){
+		var reader = new FileReader();
+    
+    reader.onload = function(event){
+        originalImage.onload = function(){
+             console.log("Image Succesfully Loaded");
+             imageUploaded = true;
+        };
+        originalImage.src = event.target.result;
     };
-    image.src = "http://upload.wikimedia.org/wikipedia/en/1/19/OBTN.jpg";
-});
+    
+    reader.readAsDataURL(e.target.files[0]);   
+}, false);
 
-</script> -->
+filterChanger.addEventListener("change", function(e){
+	var filter = filterChanger.value;
+  	
+  if(imageUploaded && filter != "none"){
+  
+  	// Apply filter
+  	LenaJS.filterImage(filteredImageCanvas, LenaJS[filter], originalImage);
+  }
+}, false);
+
+
+
+
+</script>
