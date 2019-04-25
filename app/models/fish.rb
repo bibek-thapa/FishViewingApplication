@@ -1,9 +1,9 @@
 class Fish < ApplicationRecord
 	has_many_attached :files
 	scope :with_eager_loaded_images, -> { eager_load(images_attachments: :blob) }
-	validates:genus,presence:true,length:{minimum:5,maximum:20}
+	validates:genus,presence:true,length:{minimum:5,maximum:120}
 	validates:description,presence:true,length:{minimum:5,maximum:120}
-	validates:commonname,presence:true,length:{minimum:5,maximum:20}
+	validates:commonname,presence:true,length:{minimum:5,maximum:120}
 	validate:image_type
 
 	private 
