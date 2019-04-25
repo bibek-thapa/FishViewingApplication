@@ -1,9 +1,9 @@
 <%= form_with(model: fish, local: true) do |form| %>
   <% if fish.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger">
       <h2><%= pluralize(fish.errors.count, "error") %> prohibited this fish from being saved:</h2>
 
-      <ul>
+      <ul class=alert alert-danger>
       <% fish.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
