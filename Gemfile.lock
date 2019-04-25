@@ -168,6 +168,7 @@ GEM
     regexp_parser (1.4.0)
     responsive_images (0.1.2)
       mobvious
+    rmagick (3.1.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
     sass (3.7.4)
@@ -238,6 +239,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 5.2.2)
   responsive_images
+  rmagick
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
