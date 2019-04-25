@@ -1,0 +1,47 @@
+<% if !notice.blank? %>
+ <p id="notice" class="alert alert-success"><%= notice %></p>
+<% end %>
+<b><h1 align="center" style="font-family:courier;">List of Users</h1></b>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="w-25">Email</th>
+      <th class="w-25">First Name</th>
+      <th class="w-25">LastName</th>
+     
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td class="w-25"><%= user.firstname %></td>
+        <td class="w-25"><%= user.lastname %></td>
+        <td class="w-25"><%= user.email %></td>
+        <td class="w-25"></td>
+        
+      <td class="w-25">
+    <%= link_to user, class: "btn btn-default btn-sm" do %>
+      Show
+      <% end %>
+    </td>
+     <td class="w-25">  
+    <%= link_to edit_user_path(user), class: "btn btn-default btn-sm" do %>
+    Edit
+    <% end %>
+  </td>
+     <td class="w-25">
+    <%= link_to user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" do %>
+ Delete
+ <% end %>
+ </td>  
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Add User', new_user_path ,class:"btn btn-primary"%>

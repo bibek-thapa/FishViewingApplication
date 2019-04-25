@@ -7,15 +7,15 @@ class FishController < ApplicationController
     @fish = Fish.all
      
     # Apply XSLT
-    document = Nokogiri::XML(@fish.as_json.to_xml)
-    template = Nokogiri::XSLT(File.read('app/assets/fish.xsl'));
-    transformed_document = template.transform(document) 
+    # document = Nokogiri::XML(@fish.as_json.to_xml)
+    # template = Nokogiri::XSLT(File.read('app/assets/fish.xsl'));
+    # transformed_document = template.transform(document) 
 
-    # dumps the transformed document to the console so you can see the effects
-     puts "---\nBefore"
-     puts document
-     puts "---\nAfter"
-     puts transformed_document 
+    # # dumps the transformed document to the console so you can see the effects
+    #  puts "---\nBefore"
+    #  puts document
+    #  puts "---\nAfter"
+    #  puts transformed_document 
       respond_to do |format|
       format.html{render :index}
       format.json{render :index, status: :ok}

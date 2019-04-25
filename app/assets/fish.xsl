@@ -2,13 +2,15 @@
  <xsl:template match="/">
  <ul id='rootOfList'>
  <xsl:for-each select="objects/object">
+
+ 
  <li>
- <xsl:value-of select="genus"/>,
- <xsl:value-of select="commonname"/>
+ 
  <xsl:value-of select="description"/>
- <xsl:value-of select="files"/>
+ 
  
  </li>
+ </ul>
  </xsl:foreach>
  </ul>
  </xsl:template>

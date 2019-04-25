@@ -1,9 +1,11 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+
 <div class="jumbotron">
  <div class="container">
  <h1>Welcome to my world of fish!</h1>
+ <script src="loadFishJson.js"></script>
 
-
-  <script src="loadFishXls.js"></script>
+  
  
  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more>></a></p>
  </div>
@@ -17,9 +19,7 @@
  <div class="container-fluid">
  <!-- Example row of columns -->
  <div class="row">
- 	<ul id="fishList">
- 		<li class="noneMarker"><em>none yet</em></li>
-</ul>
+ 	
 </div>
 
 
@@ -28,6 +28,7 @@
  <div class ="container-fluid">
 <div class="row">
  <% @fishes.each do |fish| %>
+ 
  <div class="col-md-4">
  <h2><%= fish.commonname%></h2>
 
@@ -37,21 +38,31 @@
       gravity: "center",
       resize: "200x200^",
  }),class:"img-thumbnail"%>
+ <p><%= link_to "Show more", fish%></p>
 	<%break%>
 
+
   <%end%>
+
+  <ul >
+ 		<li> <em><%=fish.description%></em></li>
+  </ul>
     
  <p>
- <%= link_to 'Read more >', fish, class: "btn btn-default"%>
+ 
  </p>
  </div>
 <% end %>
 </div>
 
-<button id="loadButton">Next</button>
+
+
+
+
 
  <hr>
  <footer>
- <p>&copy; 2018 Company, Inc.</p>
+ <p>&copy; 2019 Fish Company, Inc.</p>
  </footer>
 </div> 
+

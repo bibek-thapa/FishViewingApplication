@@ -5,18 +5,17 @@
 
 	"use strict";
 
-	var insertFish = function(fishes)
+	var insertFish = function(fish)
 	{
 		var list = document.getElementById("fishList");
 		list.getElementsByClassName("noneMarker")[0].hidden = true;
-		fishes.forEach(function(fish){
+		
 			var newLI=document.createElement("li");
-			var newText=document.createTextNode("Genus :"+fish.genus);
+			var newText=document.createTextNode("Description :"+fish.description);
 			newLI.appendChild(newText);
 			list.appendChild(newLI);
 			
-		});
-	};
+			};
 
 
 	var loadFish=function()
